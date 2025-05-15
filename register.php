@@ -1,76 +1,56 @@
-<!DOCTYPE html>
-<html lang="sq">
-<head>
-    <meta charset="UTF-8">
-    <title>Regjistrohu</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<header>
-    <h1>Futboll Fanatik</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="register.php">Regjistrohu</a>
-        <a href="admin.php">Admin</a>
-    </nav>
-</header>
+<?php
+ /*
+  We will include config.php for connection with database.
+  We will get datas from index.php file, and inster them into database when Sign up button is clicked in index.php file.
+  If any of session is empty we will get a message
+  */
 
-    <main>
-    <form method="post">
-    <label>Emri:</label>
-    <input type="text" name="emri" required><br>
+	include_once('config.php');
 
-    <label>Email:</label>
-    <input type="email" name="email" required><br>
+	if(isset($_POST['submit']))
+	{
 
-    <label>Password:</label>
-    <input type="password" name="password" required><br>
+		$emri = $_POST['emri'];
+		$username = $_POST['username'];
+		$email = $_POST['email'];
 
-    <label>Mosha:</label>
-    <input type="number" name="mosha" required><br>
-
-    <label>Numri i telefonit:</label>
-    <input type="text" name="telefoni" required><br>
-
-    <label>Pozita që dëshiron të luash:</label>
-    <select name="pozita">
-        <option value="Portier">Portier</option>
-        <option value="Mbrojtës">Mbrojtës</option>
-        <option value="Mesfushor">Mesfushor</option>
-        <option value="Sulmues">Sulmues</option>
-    </select><br>
-
-    <label>Zgjedh Ekipin:</label>
-    <select name="ekipi">
-        <option value="Real Madrid">Real Madrid</option>
-        <option value="FC Barcelona">FC Barcelona</option>
-        <option value="Manchester United">Manchester United</option>
-        <option value="Juventus">Juventus</option>
-    </select><br>
-
-    <button type="submit" name="submit">Regjistrohu</button>
-</form>
+		$tempPass = $_POST['password'];
+		$password = password_hash($tempPass, PASSWORD_DEFAULT);
 
 
-        <?php
-        if (isset($_POST['submit'])) {
-            $emri = $_POST['emri'];
-            $email = $_POST['email'];
-            $password = $_POST['password'];
-            $mosha = $_POST['mosha'];
-            $telefoni = $_POST['telefoni'];
-            $pozita = $_POST['pozita'];
-            $ekipi = $_POST['ekipi'];
-        
-            $rreshti = "$emri|$email|$password|$mosha|$telefoni|$pozita|$ekipi\n";
-            file_put_contents("users.txt", $rreshti, FILE_APPEND);
-            echo "<p class='success'>Regjistrimi u bë me sukses!</p>";
-        }
-        
-        
-        ?>
-    </main>
-</body>
-</html>
 
+		$tempConfirm = $_POST['confirm_password'];
+		$confirm_password = password_hash($tempConfirm, PASSWORD_DEFAULT);
+
+
+		if(empty($emri) || empty($username) || empty($email) || empty($password) || empty($confirm_password))
+		{
+			echo "You have not filled in all the fields.";
+		}
+		else
+		{
+
+			$sql = "INSERT INTO users(emri,username,email,password, confirm_password) VALUES (:emri, :username, :email, :password, :confirm_password)";
+
+			$insertSql = $conn->prepare($sql);
+			
+
+			$insertSql->bindParam(':emri', $emri);
+			$insertSql->bindParam(':username', $username);
+			$insertSql->bindParam(':email', $email);
+			$insertSql->bindParam(':password', $password);
+			$insertSql->bindParam(':confirm_password', $confirm_password);
+
+			$insertSql->execute();
+
+			header("Location: login.php");
+
+
+		}
+
+
+
+	}
+
+
+?>

@@ -9,9 +9,9 @@
 <header>
     <h1>Futboll Fanatik</h1>
     <nav>
-        <a href="index.html">Home</a>
-        <a href="shop.html">Shop</a>
-        <a href="register.php">Regjistrohu</a>
+        <a href="index.php">Home</a>
+        <a href="shop.php">Shop</a>
+        <a href="signup.php">Regjistrohu</a>
         <a href="admin.php">Admin</a>
     </nav>
 </header>

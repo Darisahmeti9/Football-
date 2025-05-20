@@ -20,7 +20,7 @@
         <div class="hero-overlay">
             <h2>Bashkohu me ekipin tënd të ëndrrave</h2>
             <p>Blej fanella, shiko ndeshje dhe bëhu pjesë e pasionit të vërtetë futbollistik!</p>
-            <a href="register.php" class="btn">Regjistrohu Tani</a>
+            <a href="signup.php" class="btn">Regjistrohu Tani</a>
         </div>
     </section>
 
@@ -38,12 +38,12 @@
     <section class="gallery">
         <h2 style="color: black;">Ekipet</h2>
         <div class="grid-gallery">
-            <img src="images/real.jpg" alt="Real Madrid">
-            <img src="images/barcelona.jpg" alt="Barcelona">
-            <img src="images/juventus.jpg" alt="Juventus">
-            <img src="images/man-utd.jpg" alt="Manchester United">
-            <img src="images/bayern.jpg" alt="Bayern Munich">
-            <img src="images/chelsea.jpg" alt="Chelsea">
+            <img src="images/Real_Madrid.webp" alt="Real Madrid" >
+            <img src="images/baa.png" alt="Barcelona">
+            <img src="images/Juventus.svg" alt="Juventus">
+            <img src="images/Manchester.webp" alt="Manchester United">
+            <img src="images/FC_Bayern.svg" alt="Bayern Munich">
+            <img src="images/Chelsea.png" alt="Chelsea">
         </div>
     </section>
 

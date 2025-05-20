@@ -168,9 +168,10 @@ button {
 }
 
 .grid-gallery img {
-    width: 100%;
+    width: 40%;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    
 }
 
 .grid-gallery img:hover {

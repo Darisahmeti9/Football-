@@ -63,8 +63,8 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="list_teams.php">
-                                Teams
+                            <a class="nav-link" href="list_products.php">
+                               Products
                             </a>
                         </li>
                         <li class="nav-item">
